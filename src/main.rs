@@ -1,11 +1,19 @@
 fn main() {
-    let four = IpAddrKind::V4;
-    let six = IpAddrKind::V6;
+    
+    // first struct instance
+    let home = IpAddr {
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1"),
+    };
 
-    route(IpAddrKind::V4);
-    route(IpAddrKind::V6);
+    //second struct instance
+    let loopback = IpAddr {
+        kind: IpAddrKind::V6,
+        address: String::from("::1"),
+    };
 
-    println!("we have 2 enum instances: v4: {:?} and v6: {:?}",four, six);
+
+    println!("we have 2 struct instances: v4: {:#?} and v6: {:#?}",home, loopback);
 }
 
 //enum defination
@@ -15,7 +23,9 @@ enum IpAddrKind {
     V6,
 }
 
-// function that has one parameter of type enum IpAddrKind
-fn route(ip_type: IpAddrKind) {
-    println!("function returns nothing else! Only {:?}", ip_type);
+// struct defination that implements above enum
+#[derive(Debug)]
+struct IpAddr {
+    kind: IpAddrKind,
+    address: String,
 }
