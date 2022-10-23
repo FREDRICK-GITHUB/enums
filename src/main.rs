@@ -1,15 +1,27 @@
 fn main() {
-    let home = IpAddr::V4(127,0,0,1);
-    let loopback = IpAddr::V6(String::from("::1"));
-
-    println!("we have 2 enum variants returning data of different data types: v4: {:?} and v6: {:?}",home, loopback);
+    println!("The highest cent denomination is Quarter and has a value of: {}", value_in_cents(Coin::Quarter));
 }
 
-//enum defination
-#[derive(Debug)]
-enum IpAddr {
-    V4(u8, u8, u8, u8),
-    V6(String),
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
 }
 
+
+fn value_in_cents(coin: Coin) -> u32 {
+    match coin {
+        /*first part of argument before => is called a pattern. Second part is the code to run
+        we have 4 arms in this enum (Coin)
+        */
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => { 
+            println!("kanuthu!!!");
+            25 
+        },
+    }
+}
 
