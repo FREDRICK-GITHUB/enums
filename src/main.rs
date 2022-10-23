@@ -1,12 +1,17 @@
 fn main() {
-    println!("The highest cent denomination is Quarter and has a value of: {}", value_in_cents(Coin::Quarter));
+    println!("The highest cent denomination is Quarter and has a value of: {}", value_in_cents(Coin::Quarter(UsStates::Alabama)));
+}
+#[derive(Debug)]
+enum UsStates {
+    Alabama,
+    Alaska,
 }
 
 enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter,
+    Quarter(UsStates),
 }
 
 
@@ -18,8 +23,8 @@ fn value_in_cents(coin: Coin) -> u32 {
         Coin::Penny => 1,
         Coin::Nickel => 5,
         Coin::Dime => 10,
-        Coin::Quarter => { 
-            println!("kanuthu!!!");
+        Coin::Quarter(state) => { 
+            println!("kanuthu!!! from state: {:?}",state);
             25 
         },
     }
